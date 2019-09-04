@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>DB First bash at Conqa Cash Register</title>
+</head>
+<body>
+<script>
+
+</script>
+<h1>Conqa Calculator</h1>
+
+<p>Enter value of item:</p>
+
+<form id="transactionValues" onsubmit="calculateValue()">
+    Item Value: <input type="number" id="itemValue"><br>
+    Quantity: <input type="number" id="quantity"><br>
+    <input type="submit" value="Calculate Total">
+</form> 
+  
+<script>
+  function calculateValue() {
+    let itemValue = document.getElementsById("itemValue").value;
+    let quantity = document.getElementsById("quantity").value;
+    let total = itemValue * quantity;
+    console.log("itemValue" + itemValue);
+    console.log("quantity" + quantity);
+    console.log("total" + total);
+  }
+
+</script>
+
+
+
+
+</body>
+</html>
