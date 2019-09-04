@@ -18,12 +18,13 @@
   
 <script>
   function calculateValue() {
-    let itemValue = document.getElementsById("itemValue").value;
-    let quantity = document.getElementsById("quantity").value;
+    let itemValue = document.getElementById("itemValue").value;
+    let quantity = document.getElementById("quantity").value;
     let total = itemValue * quantity;
     console.log("itemValue" + itemValue);
     console.log("quantity" + quantity);
     console.log("total" + total);
+    alert(total);
   }
 
 </script>
