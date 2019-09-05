@@ -34,10 +34,21 @@ function chooseDiscountRate(subTotal){
     if ((subTotal >= 1000) && (subTotal <= 4999)){
         return 3;
     }
+    else if ((subTotal >= 5000) && (subTotal <= 6999)){
+        return 5;
+    }
+    else if ((subTotal >= 7000) && (subTotal <= 9999)){
+        return 7;
+    }
+    else if ((subTotal >= 10000) && (subTotal <= 49999)){
+        return 10;
+    }
+    else if (subTotal >= 50000){
+        return 15;
+    }
     else {
         return 0;
     }
-
 }
 
 function calculateDiscount({discountRate, subTotal}) {
