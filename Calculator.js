@@ -1,7 +1,8 @@
 
 function processTransaction() {
-    const itemValue = document.getElementById("itemValue").value;
-    const quantity = document.getElementById("quantity").value;
+    console.log("transaction start")
+    const itemValue = parseFloat(document.getElementById("itemValue").value);
+    const quantity = parseFloat(document.getElementById("quantity").value);
     const taxCode = document.getElementById("taxCode").value; 
     const subTotal = itemValue * quantity;
 
@@ -12,35 +13,38 @@ function processTransaction() {
     const discountRate = chooseDiscountRate(subTotal);
     console.log("discountRate " + discountRate);
 
-    const discountValue = calculateDiscount(discountRate);
+    const discountValue = calculateDiscount({discountRate, subTotal});
     console.log("discountValue " + discountValue);
 
-    const taxRate = chooseTaxRate(taxCode);
-    console.log("taxRate " + taxRate);
+    //const taxRate = chooseTaxRate(taxCode);
+    //console.log("taxRate " + taxRate);
 
-    const taxToPay = calculateTax(taxRate);
-    console.log("taxToPay " + taxToPay);
+    //const taxToPay = calculateTax(taxRate);
+    //console.log("taxToPay " + taxToPay);
 
-    const grandTotal = calculateGrandTotal(discountValue, subTotal, taxToPay);
+    const grandTotal = calculateGrandTotal({discountValue, subTotal});
+    console.log({grandTotal});
+
     displayResult(grandTotal);
 
 }
 function chooseDiscountRate(subTotal){
-    switch (subTotal){
-        case (subTotal <= 999):
-            return 0;
-        case ((subTotal >= 1000) && (subTotal <= 4999)):
-            return 3;
-        default: 
-            return 0;
+    console.log("subtotal in chooseDiscountRate = " + subTotal);
+    console.log(typeof subTotal);
+    if ((subTotal >= 1000) && (subTotal <= 4999)){
+        return 3;
     }
+    else {
+        return 0;
+    }
+
 }
 
-function calculateDiscount(discountRate, subTotal) {
+function calculateDiscount({discountRate, subTotal}) {
     return ((subTotal/100)*discountRate);
 }
 
-
+/*
 function chooseTaxRate(taxCode) {
     console.log("taxcode " + taxCode);
     switch (taxCode) {
@@ -50,19 +54,21 @@ function chooseTaxRate(taxCode) {
             return 0;
     }
 }
-
+*/
 
 
 function calculateTax(taxRate) {
 
 }
 
-function calculateGrandTotal(subTotal, discountValue) {
-return subTotal - discountValue;
+function calculateGrandTotal({subTotal, discountValue}) {
+    grandTotal = Number(subTotal - discountValue)
+return grandTotal;
+
 }
 
 function displayResult(grandTotal){
-    alert("Transaction total: " + grandTotal); // i don't understand why taxCode only works without declaring it as a 'var' or other type.
+    alert("Transaction total: " + grandTotal); 
 
     
 }
