@@ -27,3 +27,31 @@ test('return discount value 3 when subtotal is more than 50000', () => {
     subTotal = 50999;
     expect(calculutor.chooseDiscountRate(subTotal)).toBe(15);
 });
+
+
+
+//testing tax rate picker
+test('return taxrate value 0 when taxcode is outside known tax codes', () => {
+    taxCode = "zz";
+    expect(calculutor.chooseTaxRate(taxCode)).toBe(0);
+});
+test('return taxrate value 6.85 when taxcode is UT', () => {
+    taxCode = "UT";
+    expect(calculutor.chooseTaxRate(taxCode)).toBe(6.85);
+});
+test('return taxrate value 8 when taxcode is NV', () => {
+    taxCode = "NV";
+    expect(calculutor.chooseTaxRate(taxCode)).toBe(8);
+});
+test('return taxrate value 4 when taxcode is AL', () => {
+    taxCode = "AL";
+    expect(calculutor.chooseTaxRate(taxCode)).toBe(4);
+});
+test('return taxrate value 8.25 when taxcode is CA', () => {
+    taxCode = "CA";
+    expect(calculutor.chooseTaxRate(taxCode)).toBe(8.25);
+});
+test('return taxrate value 6.25 when taxcode is TX', () => {
+    taxCode = "TX";
+    expect(calculutor.chooseTaxRate(taxCode)).toBe(6.25);
+});

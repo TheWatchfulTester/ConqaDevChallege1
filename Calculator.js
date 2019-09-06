@@ -55,7 +55,7 @@ function calculateDiscount({discountRate, subTotal}) {
     return ((subTotal/100)*discountRate);
 }
 
-/*
+
 function chooseTaxRate(taxCode) {
     console.log("taxcode " + taxCode);
     switch (taxCode) {
@@ -65,7 +65,7 @@ function chooseTaxRate(taxCode) {
             return 0;
     }
 }
-*/
+
 
 
 function calculateTax(taxRate) {
@@ -86,4 +86,5 @@ function displayResult(grandTotal){
 
 module.exports = {
     chooseDiscountRate: chooseDiscountRate,
+    chooseTaxRate: chooseTaxRate,
 };
