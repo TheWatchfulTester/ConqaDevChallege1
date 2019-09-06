@@ -83,3 +83,7 @@ function displayResult(grandTotal){
 
     
 }
+
+module.exports = {
+    chooseDiscountRate: chooseDiscountRate,
+};
