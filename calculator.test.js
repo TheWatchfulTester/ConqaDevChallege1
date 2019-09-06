@@ -1,8 +1,9 @@
 const discountValue = require ('./calculator');
-const subTotal = require ('./calculator');
+var subTotal = require ('./calculator');
 
 
-test(subTotal = 100, () => {
-expect(discountRate).toBe(0);
+test('return no discount when subtotal is less than 1000', () => {
+    subTotal = 999;
+    expect(discountRate).toBe(0);
 });
 
