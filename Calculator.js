@@ -16,13 +16,13 @@ function processTransaction() {
     const discountValue = calculateDiscount({discountRate, subTotal});
     console.log("discountValue " + discountValue);
 
-    //const taxRate = chooseTaxRate(taxCode);
-    //console.log("taxRate " + taxRate);
+    const taxRate = chooseTaxRate(taxCode);
+    console.log("taxRate " + taxRate);
 
-    //const taxToPay = calculateTax(taxRate);
-    //console.log("taxToPay " + taxToPay);
+    const taxToPay = calculateTax({taxRate, discountValue,subTotal });
+    console.log("taxToPay " + taxToPay);
 
-    const grandTotal = calculateGrandTotal({discountValue, subTotal});
+    const grandTotal = calculateGrandTotal({discountValue, subTotal, taxToPay});
     console.log({grandTotal});
 
     displayResult(grandTotal);
@@ -61,6 +61,14 @@ function chooseTaxRate(taxCode) {
     switch (taxCode) {
         case "UT":
             return 6.85;
+        case "AL":
+            return 4;
+        case "CA":
+            return 8.25;
+        case "TX":
+            return 6.25;
+        case "NV":
+            return 8;
         default: 
             return 0;
     }
@@ -68,20 +76,18 @@ function chooseTaxRate(taxCode) {
 
 
 
-function calculateTax(taxRate) {
-
+function calculateTax({taxRate, discountValue, subTotal}) {
+    return (((subTotal-discountValue)/100)*taxRate);
 }
 
-function calculateGrandTotal({subTotal, discountValue}) {
-    grandTotal = Number(subTotal - discountValue)
+function calculateGrandTotal({subTotal, discountValue, taxToPay}) {
+    grandTotal = Number(subTotal - discountValue + taxToPay);
 return grandTotal;
 
 }
 
 function displayResult(grandTotal){
-    alert("Transaction total: " + grandTotal); 
-
-    
+    alert("Transaction total: " + grandTotal);
 }
 
 module.exports = {
